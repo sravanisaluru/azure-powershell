@@ -20,6 +20,29 @@
 
 ## Upcoming Release
 
+## Version 5.5.0
+* Removed `-ApplicationId` from `New-AzADServicePrincipal` `SimpleParameterSet` [#17256]
+* Added `New-AzResourceManagementPrivateLink`, and `New-AzPrivateLinkAssociation` cmdlets
+* Added authorization related cmdlets:
+    - `Get-AzRoleAssignmentSchedule`
+    - `Get-AzRoleAssignmentScheduleInstance`
+    - `Get-AzRoleAssignmentScheduleRequest`
+    - `Get-AzRoleEligibilitySchedule`
+    - `Get-AzRoleEligibilityScheduleInstance`
+    - `Get-AzRoleEligibilityScheduleRequest` 
+    - `Get-AzRoleEligibleChildResource`
+    - `Get-AzRoleManagementPolicy` 
+    - `Get-AzRoleManagementPolicyAssignment`
+    - `New-AzRoleAssignmentScheduleRequest` 
+    - `New-AzRoleEligibilityScheduleRequest`
+    - `New-AzRoleManagementPolicyAssignment` 
+    - `Remove-AzRoleManagementPolicy`
+    - `Remove-AzRoleManagementPolicyAssignment` 
+    - `Stop-AzRoleAssignmentScheduleRequest`
+    - `Stop-AzRoleEligibilityScheduleRequest` 
+    - `Update-AzRoleManagementPolicy`
+* Added `Get-AzResourceManagementPrivateLink`, `Remove-AzResourceManagementPrivateLink`, `Get-AzResourceManagementPrivateLinkAssociation` and  `Remove-AzResourceManagementPrivateLinkAssociation` cmdlets
+
 ## Version 5.4.0
 * Fixed keycredential key format, from base64url to byte [#17131]
 * Fixed add key credential overwrite existing one [#17088]
