@@ -53,6 +53,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tenantId = onPremise ? AdfsTenant :
                 (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
+#if DEBUG
+            GetAccounts(tokenCacheProvider, @"https://login.windows-ppe.net/orgnizations");
+            GetAccounts(tokenCacheProvider, @"https://login.windows-ppe.net/f686d426-8d16-42db-81b7-ab578e110ccd");
+#endif
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
