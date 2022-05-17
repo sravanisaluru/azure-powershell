@@ -1,3 +1,158 @@
+## 8.0.0 - May 2022
+#### Az.Accounts
+* Added a preview feature allowing user to control the following configurations by using 'Get-AzConfig', 'Update-AzConfig' and 'Clear-AzConfig':
+    - 'DefaultSubscriptionForLogin': Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+    - 'DisplayBreakingChangeWarning': Controls if warning messages for breaking changes are displayed or suppressed.
+    - 'EnableDataCollection': When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
+* Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+* Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
+
+#### Az.Aks
+* Removed these aliases:
+  * 'Get-AzAks'
+  * 'New-AzAks'
+  * 'Set-AzAks'
+  * 'Remove-AzAks'
+
+#### Az.ApiManagement
+* [Breaking change] Replaced parameter 'Sample' by 'Examples' in 'New-AzApiManagementOperation' and 'Set-AzApiManagementOperation'
+* Updated APIM .Net SDK version to 8.0.0 / Api Version 2021-08-01
+
+#### Az.Cdn
+* Migrated the cmdlets from SDK based to autorest generated.
+
+#### Az.Compute
+* Edited 'New-AzVm' cmdlet internal logic to use the 'PlatformFaultDomain' value in the 'PSVirtualMachine' object passed to it in the new virtual machine.
+* Added a new cmdlet named 'Restart-AzHost' to restart dedicated hosts. 
+* Added '-DataAccessAuthMode' parameter to the following cmdlets:
+    - 'New-AzDiskConfig'
+    - 'New-AzDiskUpdateConfig'
+    - 'New-AzSnapshotConfig'
+    - 'New-AzSnapshotUpdateConfig'
+* Added '-Architecture' parameter to the following cmdlets:
+    - 'New-AzDiskConfig'
+    - 'New-AzDiskUpdateConfig'
+    - 'New-AzSnapshotConfig'
+    - 'New-AzSnapshotUpdateConfig'
+    - 'New-AzGalleryImageDefinition'
+* Added '-InstanceView' parameter to 'Get-AzRestorePoint'
+
+#### Az.ContainerRegistry
+* Updated parameter types from bool to bool? for 'Update-AzContainerRegistryRepository' [#17857]
+    - 'ReadEnabled'
+    - 'ListEnabled'
+    - 'WriteEnabled'
+    - 'DeleteEnabled'
+
+#### Az.CosmosDB
+* Introduced support for creating containers with Client Encryption Policy. The current supported version of Client Encryption Policy is 1.
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 6.1.0
+* Fixed Set-AzDataFactoryV2 -InputObject not correct with PublicNetworkAccess Parameter
+
+#### Az.EventHub
+* Made 'IPRule' and 'VirtualNetworkRule' optional in 'Set-AzEventHubNetworkRuleSet'.
+* Deprecate older MSI properties in 'Set-AzEventHubNamespace' and 'New-AzEventHubNamespace'
+
+#### Az.HealthcareApis
+* Migrated module to generated codebase.
+* Added cmdlets:
+    - New/Get/Update/Remove-AzHealthcareApisService
+    - New/Get/Update/Remove-AzHealthcareApisWorkspace
+    - New/Get/Update/Remove-AzHealthcareFhirService
+    - New/Get/Update/Remove-AzHealthcareDicomService
+    - New/Get/Update/Remove-AzHealthcareIoTConnector
+    - New/Get/Remove-AzHealthcareIotConnectorFhirDestination
+    - Get-AzHealthcareFhirDestination
+
+#### Az.KeyVault
+* Added 'Rotate' into the list of permissions to keys [#17970]
+
+#### Az.Network
+* Supported 'Microsoft.Network/privateLinkServices' in 'Get-AzPrivateEndpointConnection' [#16984].
+* Provided friendly message if resource type is not supported for private endpoint connection features [#17091].
+* Added 'DisableIPsecProtection' to 'Virtual Network Gateway'.
+* Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
+    - 'Add-AzExpressRoutePortAuthorization'
+    - 'Get-AzExpressRoutePortAuthorization'
+    - 'Remove-AzExpressRoutePortAuthorization'
+* Added option parameter 'AuthorizationKey' to cmdlet 'New-AzExpressRouteCircuit' to allow creating ExpressRoute Circuit on a ExpressRoutePort with a different owner.
+* Fix bug that can't display CustomIpPrefix in PublicIpPrefix.
+* Updated cmdlets to add new property of 'HubRoutingPreference' in VirtualHub and set property of 'PreferredRoutingGateway' deprecated .
+    - 'New-AzVirtualHub'
+    - 'Update-AzVirtualHub'
+* Added optional parameter 'AuxiliaryMode' to cmdlet 'New-AzNetworkInterface' to enable this network interface as Sirius enabled. Allowed values are None(default) and MaxConnections.
+* Multipool feature change: Updated cmdlets to add new optional property: 'ConfigurationPolicyGroups' object for associating policy groups.
+    - 'Update-AzVpnServerConfiguration'
+    - 'New-AzVpnServerConfiguration'
+* Multipool feature change: Updated cmdlets to add new optional property: 'P2SConnectionConfiguration' object for specifying multiple Connection configurations.
+    - 'Update-AzP2sVpnGateway'
+    - 'New-AzP2sVpnGateway'
+* Multipool feature change: Added new cmdlets to suppport CRUD of Configuration policy groups for VpnServerConfiguration.
+    - 'Get-AzVpnServerConfigurationPolicyGroup'
+    - 'New-AzVpnServerConfigurationPolicyGroup'
+    - 'Update-AzVpnServerConfigurationPolicyGroup'
+    - 'Remove-AzVpnServerConfigurationPolicyGroup'
+
+#### Az.Resources
+* Upgraded and rivised 'Get-AzLocation' cmdlet:
+    - Upgraded 'subscriptionClient' for 'Get-AzLocation'. Changed its apiVersion from 2016-01-01 to 2021-01-01.[#18002]
+    - Added all attributes of location info for 'Get-AzLocation', including 'pairedRegion' and so on. [#18045][#17536]
+    - Support ExtendedLocations by 'Get-AzLocation' [#18046]
+* Added the following cmdlets to remain in parity with 2021-04-01 API version:
+    - 'New-AzHierarchySetting'
+    - 'Get-AzHierarchySetting'
+    - 'Update-AzHierarchySetting'
+    - 'Remove-AzHierarchySetting'
+    - 'Get-AzManagementGroupSubscription'
+    - 'Get-AzSubscriptionUnderManagementGroup' 
+    - 'Start-AzTenantBackfill'
+    - 'Get-AzTenantBackfillStatus' 
+    - 'Get-AzManagementGroupNameAvailability'
+    - 'Get-AzEntity' 
+
+#### Az.Security
+* Added new cmdlet: 'Get-AzSecuritySolution'
+* Added Alerts Suppression Rules to cmdlets:
+    'Get-AlertsSuppressionRule'
+    'Remove-AlertsSuppressionRule'
+    'Set-AlertsSuppressionRule'
+    'New-AzAlertsSuppressionRuleScope'
+
+#### Az.ServiceBus
+* Fixed miscellaneous network rule set typos across module.
+* Add 'TrustedServiceAccessEnabled' to 'Set-AzServiceBusNetworkRuleSet'
+
+#### Az.Sql
+* Added new cmdlet 'Get-AzSqlInstanceEndpointCertificate'
+* Added parameter 'HighAvailabilityReplicaCount' to 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
+
+#### Az.Storage
+* Supported generae Sas token for DataLakeGen2
+    -  'New-AzDataLakeGen2SasToken'
+* Show OAuth token in debug log in debug build only
+    -  'New-AzStorageContext'
+* Supported return more file properties when list Azure file
+    -  'Get-AzStorageFile'
+
+#### Az.Synapse
+* Added support for Synapse Link for Azure Sql Database
+    - Added 'Get-AzSynapseLinkConnection' cmdlet
+    - Added 'Get-AzSynapseLinkConnectionDetailedStatus' cmdlet
+    - Added 'Set-AzSynapseLinkConnection' cmdlet
+    - Added 'Remove-AzSynapseLinkConnection' cmdlet
+    - Added 'Start-AzSynapseLinkConnection' cmdlet
+    - Added 'Stop-AzSynapseLinkConnection' cmdlet
+    - Added 'Set-AzSynapseLinkConnectionLinkTable' cmdlet
+    - Added 'Get-AzSynapseLinkConnectionLinkTable' cmdlet
+    - Added 'Get-AzSynapseLinkConnectionLinkTableStatus' cmdlet
+    - Added 'Update-AzSynapseLinkConnectionLandingZoneCredential' cmdlet
+* Set UploadedTimestamp when adding package to spark pool by 'Update-AzSynapseSparkPool'
+
+#### Az.Websites
+* Updated 'Get-AzWebApp' and 'Get-AzWebAppSlot' to expose 'VirtualNetworkSubnetId' property [#18042]
+
 ## 7.5.0 - April 2022
 #### Az.Accounts
 * Upgraded Microsoft.Rest.ClientRuntime to 2.3.24

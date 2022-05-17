@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.1.0
 * Migrated the cmdlets from SDK based to autorest generated.
 
 ## Version 1.8.3

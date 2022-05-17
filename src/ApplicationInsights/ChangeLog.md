@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * **[Breaking change]** Upgraded API version for ApplicationInsights component to 2020-02-02
 
 ## Version 1.3.1

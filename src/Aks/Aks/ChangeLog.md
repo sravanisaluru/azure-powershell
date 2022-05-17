@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.4
 * Removed these aliases:
   * `Get-AzAks`
   * `New-AzAks`
